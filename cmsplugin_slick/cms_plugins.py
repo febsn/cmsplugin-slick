@@ -48,7 +48,7 @@ class SlickCarouselPlugin(CMSPluginBase):
     def render(self, context, instance, placeholder):
         context = super(SlickCarouselPlugin, self).render(
             context, instance, placeholder)
-        
+
         slick_dict = {'slide': ':not(template)'}
         breakpoints = {}
         if instance.slick_preset:
@@ -75,7 +75,7 @@ class SlickCarouselPlugin(CMSPluginBase):
                 'respondTo': instance.slick_preset.respond_to,
                 'mobileFirst': instance.slick_preset.mobile_first,
             })
-        
+
         if instance.breakpoints:
             breakpoints, responsive = self._get_breakpoints(instance)
             slick_dict.update({'responsive': responsive})
@@ -112,12 +112,12 @@ class SlickCarouselPlugin(CMSPluginBase):
                 breakpoint_settings.update({'dots': breakpoint.dots})
             if breakpoint.arrows is not None:
                 breakpoint_settings.update({'arrows': breakpoint.arrows})
-                
+
             if breakpoint.center_mode is not None:
                 breakpoint_settings.update({'center_mode': breakpoint.center_mode})
             if breakpoint.center_padding:
                 breakpoint_settings.update({'centerPadding': breakpoint.center_padding})
-                
+
             if breakpoint.autoplay is not None:
                 breakpoint_settings.update({'autoplay': breakpoint.autoplay})
             if breakpoint.autoplay_speed:
@@ -134,7 +134,7 @@ class SlickCarouselPlugin(CMSPluginBase):
 
 class SlickCarouselWrappedSlidePlugin(CMSPluginBase):
     '''
-    Allow wrapp several Django-CMS plugins like one slide. For example you can add "image" 
+    Allow wrapp several Django-CMS plugins like one slide. For example you can add "image"
     and "text" plugins, and text will be like caption for image.
     '''
     model = SlickCarouselWrappedSlide
@@ -232,7 +232,7 @@ class SlickCarouselFolderImagesPlugin(CMSPluginBase):
         folder_images = instance.folder.files.instance_of(Image)
         if user.is_staff:
             pass
-        elif user.id is None: 
+        elif user.id is None:
             folder_images = instance.folder.files.filter(is_public=True)
         else:
             folder_images = instance.folder.files.filter(Q(is_public=True) | Q(owner=user))
