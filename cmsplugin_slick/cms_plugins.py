@@ -27,6 +27,7 @@ class SlickCarouselPlugin(CMSPluginBase):
     module = _('Slick Carousel')
     name = _('Slick Carousel')
     allow_children = True
+    child_classes = ['SlickCarouselWrappedSlidePlugin', 'SlickCarouselFolderImagesPlugin', ]
 
     fieldsets = (
         (None, {
