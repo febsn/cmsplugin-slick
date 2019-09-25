@@ -98,7 +98,12 @@ class SlickCarouselPreset(models.Model):
     rigth_to_left = models.BooleanField(verbose_name=_('Right to left'), default=False)
 
     use_theme = models.BooleanField(_('Use Slick theme'), default=True)
-    slick_theme = FilerFileField(verbose_name=_('Slick theme file'), blank=True, null=True)
+    slick_theme = FilerFileField(
+        verbose_name=_('Slick theme file'),
+        blank=True,
+        null=True,
+        on_delete=models.SET_NULL,
+    )
 
     def __str__(self):
         return self.title
