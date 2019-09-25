@@ -11,7 +11,6 @@ from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
 
 from filer.models.imagemodels import Image
-from cmsplugin_filer_image.conf import settings
 
 from .models import SlickCarousel, SlickCarouselWrappedSlide, SlickCarouselFolderImages
 
@@ -86,13 +85,10 @@ class SlickCarouselPlugin(CMSPluginBase):
         try:
             os.path.isfile(finders.find('cmsplugin_slick/slick/slick.min.js'))
             os.path.isfile(finders.find('cmsplugin_slick/slick/slick.css'))
-            
+
             slick_static_path = os.path.dirname(static('cmsplugin_slick/slick/slick.min.js'))
         except:
-            try:
-                slick_static_path = settings.SLICK_CDN
-            except:
-                slick_static_path = '//cdn.jsdelivr.net/jquery.slick/1.6.0/'
+            slick_static_path = '//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/'
 
         context.update({
             'slick_settings': slick_settings,

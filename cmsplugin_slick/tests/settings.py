@@ -156,7 +156,6 @@ INSTALLED_APPS = (
     'treebeard',
     'filer',
     'easy_thumbnails',
-    'cmsplugin_filer_image',
 
     'cmsplugin_slick',
 )
